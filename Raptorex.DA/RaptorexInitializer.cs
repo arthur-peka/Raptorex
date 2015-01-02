@@ -29,7 +29,7 @@ namespace Raptorex.DA
 
             var forumMessages = new List<ForumPost>()
             {
-                new ForumPost(){ Text = "Hello, world!", MessageThreadId = forumTopics.FirstOrDefault().ID, CreatedOn=DateTime.Now }
+                new ForumPost(){ Text = "Hello, world!", MessageTopicId = forumTopics.FirstOrDefault().ID, CreatedOn=DateTime.Now }
             };
             forumMessages.ForEach(m => context.ForumPosts.Add(m));
             context.SaveChanges();

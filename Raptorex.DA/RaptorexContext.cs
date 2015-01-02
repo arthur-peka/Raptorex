@@ -25,9 +25,14 @@ namespace Raptorex.DA
                 .Configure(c => c.HasColumnType("datetime2"));
 
             modelBuilder.Entity<ForumPost>()
-                .HasRequired(m => m.MessageThread)
-                .WithMany(t => t.ThreadMessages)
-                .HasForeignKey(m => m.MessageThreadId);
+                .HasRequired(m => m.MessageTopic)
+                .WithMany(t => t.Messages)
+                .HasForeignKey(m => m.MessageTopicId);
+
+            modelBuilder.Entity<ForumTopic>()
+                .HasRequired(t => t.TopicSubforum)
+                .WithMany(s => s.Topics)
+                .HasForeignKey(t => t.TopicSubforumId);
 
             modelBuilder.Configurations.Add(new UserConfig());
         }

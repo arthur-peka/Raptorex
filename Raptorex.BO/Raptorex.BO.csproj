@@ -51,6 +51,7 @@
     <Compile Include="Entities\ForumPost.cs" />
     <Compile Include="Entities\ForumTopic.cs" />
     <Compile Include="Entities\RaptorexUser.cs" />
+    <Compile Include="Entities\Subforum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

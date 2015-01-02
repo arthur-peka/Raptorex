@@ -9,16 +9,14 @@ namespace Raptorex.BO.Entities
     /// <summary>
     /// Hierarchy: Subforum -> Topic -> Post
     /// </summary>
-    public class ForumTopic : CreatedEntity
+    public class Subforum : BaseEntity
     {
         public string Title { get; set; }
 
+
         #region Navigation
-        public ICollection<ForumPost> Messages { get; set; }
 
-        public Guid TopicSubforumId { get; set; }
-
-        public Subforum TopicSubforum { get; set; }
+        public ICollection<ForumTopic> Topics { get; set; }
 
         #endregion
     }
