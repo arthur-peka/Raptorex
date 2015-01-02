@@ -9,6 +9,6 @@ namespace Raptorex.DA.Configurations
 {
     public class UserConfig : BaseConfig<RaptorexUser>
     {
-        public UserConfig() : base("User") { }
+        public UserConfig() : base("Users") { }
     }
 }

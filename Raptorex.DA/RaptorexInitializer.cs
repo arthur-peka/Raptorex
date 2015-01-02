@@ -20,9 +20,16 @@ namespace Raptorex.DA
             users.ForEach(u => context.Users.Add(u));
             context.SaveChanges();
 
+            var subforums = new List<Subforum>()
+            {
+                new Subforum(){ Title = "General" }
+            };
+            subforums.ForEach(s => context.Subforums.Add(s));
+            context.SaveChanges();
+
             var forumTopics = new List<ForumTopic>() 
             {
-                new ForumTopic(){ Title = "Thread 1", CreatedBy = users.FirstOrDefault(), CreatedOn = DateTime.Now}
+                new ForumTopic(){ Title = "Thread 1", TopicSubforumId = subforums.FirstOrDefault().ID, CreatedBy = users.FirstOrDefault(), CreatedOn = DateTime.Now}
             };
             forumTopics.ForEach(t => context.ForumTopics.Add(t));
             context.SaveChanges();

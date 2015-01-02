@@ -13,6 +13,7 @@ namespace Raptorex.DA
     {
         public RaptorexContext() : base("RaptorexDb") { }
 
+        public DbSet<Subforum> Subforums { get; set; }
         public DbSet<ForumTopic> ForumTopics { get; set; }
         public DbSet<ForumPost> ForumPosts { get; set; }
         public DbSet<RaptorexUser> Users { get; set; }
@@ -24,10 +25,10 @@ namespace Raptorex.DA
             modelBuilder.Properties<DateTime>()
                 .Configure(c => c.HasColumnType("datetime2"));
 
-            modelBuilder.Entity<ForumPost>()
-                .HasRequired(m => m.MessageTopic)
-                .WithMany(t => t.Messages)
-                .HasForeignKey(m => m.MessageTopicId);
+            //modelBuilder.Entity<ForumPost>()
+            //    .HasRequired(m => m.MessageTopic)
+            //    .WithMany(t => t.Messages)
+            //    .HasForeignKey(m => m.MessageTopicId);
 
             modelBuilder.Entity<ForumTopic>()
                 .HasRequired(t => t.TopicSubforum)
@@ -35,6 +36,7 @@ namespace Raptorex.DA
                 .HasForeignKey(t => t.TopicSubforumId);
 
             modelBuilder.Configurations.Add(new UserConfig());
+            modelBuilder.Configurations.Add(new ForumPostConfig());
         }
     }
 }
