@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Configurations\BaseConfig.cs" />
     <Compile Include="Configurations\ForumPostConfig.cs" />
+    <Compile Include="Configurations\ForumTopicConfig.cs" />
     <Compile Include="Configurations\UserConfig.cs" />
     <Compile Include="RaptorexContext.cs" />
     <Compile Include="RaptorexInitializer.cs" />

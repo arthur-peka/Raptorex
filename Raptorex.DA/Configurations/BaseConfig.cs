@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace Raptorex.DA.Configurations
 {
-    public class BaseConfig<T> : EntityTypeConfiguration<T> where T : BaseEntity
+    public abstract class BaseConfig<T> : EntityTypeConfiguration<T> where T : BaseEntity
     {
+        public BaseConfig() { }
+
         public BaseConfig(string tableName)
         {
             Map(e => e.ToTable(tableName));

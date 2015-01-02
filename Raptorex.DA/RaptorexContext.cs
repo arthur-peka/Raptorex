@@ -25,18 +25,9 @@ namespace Raptorex.DA
             modelBuilder.Properties<DateTime>()
                 .Configure(c => c.HasColumnType("datetime2"));
 
-            //modelBuilder.Entity<ForumPost>()
-            //    .HasRequired(m => m.MessageTopic)
-            //    .WithMany(t => t.Messages)
-            //    .HasForeignKey(m => m.MessageTopicId);
-
-            modelBuilder.Entity<ForumTopic>()
-                .HasRequired(t => t.TopicSubforum)
-                .WithMany(s => s.Topics)
-                .HasForeignKey(t => t.TopicSubforumId);
-
             modelBuilder.Configurations.Add(new UserConfig());
             modelBuilder.Configurations.Add(new ForumPostConfig());
+            modelBuilder.Configurations.Add(new ForumTopicConfig());
         }
     }
 }
