@@ -1,0 +1,33 @@
+﻿<div>
+    <button id="btn-login">Login</button>
+    <button id="btn-logout">Logout</button>
+</div>
+
+<script type="text/javascript">
+
+    $("#btn-login").click(function () {
+        var dataToSend = { Username: 'Lol', Password: '123' };
+
+        $.ajax({
+            url: '/api/account/login',
+            type: 'POST',
+            data: dataToSend,
+            success: function (res) {
+            }
+        });
+    });
+
+    $("#btn-logout").click(function () {
+
+        console.info(document.cookie);
+
+        $.ajax({
+            url: '/api/account/logOff',
+            type: 'POST',
+            success: function (res) {
+            }
+        });
+
+        console.info(document.cookie);
+    });
+</script>
