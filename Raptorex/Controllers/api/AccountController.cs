@@ -64,6 +64,13 @@ namespace Raptorex.Controllers.api
             return response;
         }
 
+        [HttpPost]
+        [Route("add")]
+        public HttpResponseMessage Add(UserAccountModel userModel)
+        {
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
         [HttpGet]
         [CacheControl(MaxAgeSeconds=1, NoCache=true)]
         [Route("currentUser")]
