@@ -9,7 +9,7 @@ namespace Raptorex.DA.Configurations
 {
     public class ForumPostConfig : BaseConfig<ForumPost>
     {
-        public ForumPostConfig() : base("ForumPosts")
+        public ForumPostConfig()
         {
             HasRequired(p => p.MessageTopic)
                 .WithMany(t => t.Messages)
