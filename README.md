@@ -2,7 +2,7 @@ Raptorex
 ========
 
 This is an open-source forum engine. It's built upon EF 6 (will upgrade when 7 is stable), Web API and Knockout *or* Angular
-on the front-end.
+on the front-end. Code-first database is used to ease the development (and maintenance).
 
 ## Roadmap
 
@@ -10,3 +10,4 @@ on the front-end.
 transition to Angular will be made.
 
 * Ensuring compatability with Mono, so that Raptorex can be run on non-Windows platforms.
+
