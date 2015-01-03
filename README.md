@@ -6,6 +6,8 @@ on the front-end. Code-first database is used to ease the development (and maint
 
 ## Roadmap
 
+* Unit/Integration tests
+
 * Decision needs to be made what to use - Knockout or Angular. I plan to start with Knockout, as I know it better. Later, possibly
 transition to Angular will be made.
 
