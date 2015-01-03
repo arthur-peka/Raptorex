@@ -14,8 +14,20 @@ namespace Raptorex.DA
         {
             var users = new List<RaptorexUser>()
             {
-                new RaptorexUser(){ Email = "vasja@mail.com", FirstName="Vasja", LastName="Pupkinidze", Username = "vpupkin"},
-                new RaptorexUser(){ Email = "peter@mail.com", FirstName="Peter", LastName="Petrovson", Username = "petrovson"}
+                new RaptorexUser(){ 
+                    Email = "vasja@mail.com", 
+                    FirstName="Vasja", 
+                    LastName="Pupkinidze", 
+                    Username = "vpupkin",
+                    PasswordHash = "ABJFCcSMF4Aeee91YkL7xfna6VsqUvgBgWbgsPE5/tlzVhE9ZDnAfh1dsrdWWOmsBA==" //password0
+                },
+                new RaptorexUser(){ 
+                    Email = "peter@mail.com", 
+                    FirstName="Peter", 
+                    LastName="Petrovson", 
+                    Username = "petrovson",
+                    PasswordHash = "APpPGJfCoi91qNnjzDhdj70RopuoJoHT9uMzZPa+L/A4iDqVHssShBZQRwy0e0tBDA==" //password1
+                }
             };
             users.ForEach(u => context.Users.Add(u));
             context.SaveChanges();
