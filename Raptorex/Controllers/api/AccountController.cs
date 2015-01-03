@@ -1,4 +1,7 @@
-﻿using Raptorex.Filters;
+﻿using AutoMapper;
+using Raptorex.BO.Entities;
+using Raptorex.DA.Repositories;
+using Raptorex.Filters;
 using Raptorex.Models;
 using System;
 using System.Collections.Generic;
@@ -7,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Security;
 
@@ -15,6 +19,12 @@ namespace Raptorex.Controllers.api
     [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {
+        public AccountController()
+        {
+            Mapper.CreateMap<UserAccountModel, RaptorexUser>()
+                .ForMember(dest => dest.PasswordHash, opt => opt.MapFrom(src => Crypto.HashPassword(src.PasswordPlainText)));
+        }
+
         [HttpPost]
         [Route("login")]
         public HttpResponseMessage Login(LoginModel loginInfo)
@@ -26,24 +36,6 @@ namespace Raptorex.Controllers.api
             InsertAuthCookie(loginInfo.Username, response, DateTime.Now.AddMilliseconds(FormsAuthentication.Timeout.Milliseconds));
 
             return response;
-        }
-
-        private static void InsertAuthCookie(string username, HttpResponseMessage response, DateTime expirationDate)
-        {
-            FormsAuthenticationTicket authTicket =
-                new FormsAuthenticationTicket(
-                    version: 1,
-                    name: username,
-                    issueDate: DateTime.Now,
-                    expiration: expirationDate,
-                    isPersistent: false,
-                    userData: username,
-                    cookiePath: FormsAuthentication.FormsCookiePath);
-
-            string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-            var authCookie = new CookieHeaderValue(FormsAuthentication.FormsCookieName, encryptedTicket);
-
-            response.Headers.AddCookies(new CookieHeaderValue[] { authCookie });
         }
 
         [HttpPost]
@@ -68,6 +60,10 @@ namespace Raptorex.Controllers.api
         [Route("add")]
         public HttpResponseMessage Add(UserAccountModel userModel)
         {
+            RaptorexUser userToInsert = Mapper.Map<UserAccountModel, RaptorexUser>(userModel);
+
+            UserRepository.Instance.Insert(userToInsert);
+
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
@@ -97,12 +93,37 @@ namespace Raptorex.Controllers.api
             return null;
         }
 
+        private static void InsertAuthCookie(string username, HttpResponseMessage response, DateTime expirationDate)
+        {
+            FormsAuthenticationTicket authTicket =
+                new FormsAuthenticationTicket(
+                    version: 1,
+                    name: username,
+                    issueDate: DateTime.Now,
+                    expiration: expirationDate,
+                    isPersistent: false,
+                    userData: username,
+                    cookiePath: FormsAuthentication.FormsCookiePath);
+
+            string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+            var authCookie = new CookieHeaderValue(FormsAuthentication.FormsCookieName, encryptedTicket);
+
+            response.Headers.AddCookies(new CookieHeaderValue[] { authCookie });
+        }
+
         private bool CheckCredentials(string username, string password)
         {
             if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
                 return false;
 
-            return true;
+            RaptorexUser existingUser = UserRepository.Instance.GetSingle(u => u.Username == username);
+
+            if (existingUser == null)
+                return false;
+
+            bool isCorrect = Crypto.VerifyHashedPassword(existingUser.PasswordHash, password);
+
+            return isCorrect;
         }
     }
 }

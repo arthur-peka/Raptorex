@@ -1,6 +1,7 @@
 ﻿<div>
     <button id="btn-login">Login</button>
     <button id="btn-logout">Logout</button>
+    <button id="btn-add-user">Add user</button>
 </div>
 
 <script type="text/javascript">
@@ -29,5 +30,21 @@
         });
 
         console.info(document.cookie);
+    });
+
+    $("#btn-add-user").click(function () {
+        var newUser = {
+            "Username": "ivan85", "PasswordPlainText": "password",
+            "Email": "ivan@vanya.com", "Avatar": []
+        };
+
+        $.ajax({
+            url: '/api/account/add',
+            dataType: "json",
+            data: newUser,
+            type: 'POST',
+            success: function (res) {
+            }
+        });
     });
 </script>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Raptorex.DA.Repositories
 {
@@ -23,6 +24,24 @@ namespace Raptorex.DA.Repositories
             using (var context = new RaptorexContext())
             {
                 return context.Set<T>().SingleOrDefault(condition);
+            }
+        }
+
+        public void Insert(T obj)
+        {
+            using (var context = new RaptorexContext())
+            {
+                context.Set<T>().Add(obj);
+                context.SaveChanges();
+            }
+        }
+
+        public void Update(T obj)
+        {
+            using (var context = new RaptorexContext())
+            {
+                context.Entry<T>(obj).State = EntityState.Modified;
+                context.SaveChanges();
             }
         }
 
