@@ -8,3 +8,5 @@ on the front-end.
 
 * Decision needs to be made what to use - Knockout or Angular. I plan to start with Knockout, as I know it better. Later, possibly
 transition to Angular will be made.
+
+* Ensuring compatability with Mono, so that Raptorex can be run on non-Windows platforms.
