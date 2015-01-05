@@ -19,10 +19,16 @@ namespace Raptorex.Controllers.api
     [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {
+        IBaseRepository<RaptorexUser> _userRepository;
+
         public AccountController()
         {
-            Mapper.CreateMap<UserAccountModel, RaptorexUser>()
-                .ForMember(dest => dest.PasswordHash, opt => opt.MapFrom(src => Crypto.HashPassword(src.PasswordPlainText)));
+            _userRepository = new UserRepository();
+        }
+
+        public AccountController(IBaseRepository<RaptorexUser> userRepository)
+        {
+            _userRepository = userRepository;
         }
 
         [HttpPost]
@@ -62,7 +68,7 @@ namespace Raptorex.Controllers.api
         {
             RaptorexUser userToInsert = Mapper.Map<UserAccountModel, RaptorexUser>(userModel);
 
-            UserRepository.Instance.Insert(userToInsert);
+            _userRepository.Insert(userToInsert);
 
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
@@ -116,7 +122,7 @@ namespace Raptorex.Controllers.api
             if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
                 return false;
 
-            RaptorexUser existingUser = UserRepository.Instance.GetSingle(u => u.Username == username);
+            RaptorexUser existingUser = _userRepository.GetSingle(u => u.Username == username);
 
             if (existingUser == null)
                 return false;

@@ -9,7 +9,7 @@ namespace Raptorex.DA.Repositories
 {
     public class UserRepository : BaseRepository<RaptorexUser>
     {
-        public static UserRepository Instance = new UserRepository();
+        
 
 
     }

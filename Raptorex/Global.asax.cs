@@ -1,4 +1,5 @@
 ﻿using Raptorex.DA;
+using Raptorex.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -22,6 +23,7 @@ namespace Raptorex
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Database.SetInitializer<RaptorexContext>(new RaptorexInitializer());
+            ModelMappings.Create();
         }
     }
 }

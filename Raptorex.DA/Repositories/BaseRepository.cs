@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace Raptorex.DA.Repositories
 {
-    public abstract class BaseRepository<T> where T : BaseEntity
+    public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         public IEnumerable<T> Filter(Expression<Func<T,bool>> condition)
         {
