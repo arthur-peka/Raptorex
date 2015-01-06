@@ -19,7 +19,7 @@ namespace Raptorex.Controllers.api
     [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {
-        IBaseRepository<RaptorexUser> _userRepository;
+        private IBaseRepository<RaptorexUser> _userRepository;
 
         public AccountController()
         {
