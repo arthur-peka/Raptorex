@@ -35,7 +35,7 @@ namespace Raptorex.Filters
 
                 base.OnActionExecuting(actionContext);
             }
-            catch (SecurityException ex)
+            catch (SecurityException)
             {
                 actionContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized) { 
                     Content = new StringContent("Authorization required") };
