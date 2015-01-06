@@ -15,3 +15,7 @@ transition to Angular will be made.
 
 * Ensuring compatability with Mono, so that Raptorex can be run on non-Windows platforms.
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
