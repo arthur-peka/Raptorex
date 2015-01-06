@@ -32,6 +32,7 @@ namespace Raptorex.Controllers.api
         }
 
         [HttpPost]
+        [ValidateModel]
         [Route("login")]
         public HttpResponseMessage Login(LoginModel loginInfo)
         {
@@ -63,6 +64,7 @@ namespace Raptorex.Controllers.api
         }
 
         [HttpPost]
+        [ValidateModel]
         [Route("add")]
         public HttpResponseMessage Add(UserAccountModel userModel)
         {
