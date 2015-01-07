@@ -10,30 +10,41 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Raptorex.BO.Entities;
 using Raptorex.DA;
+using Raptorex.DA.Repositories;
 
 namespace Raptorex.Controllers.api
 {
+    [RoutePrefix("api/users")]
     public class UsersController : ApiController
     {
-        private RaptorexContext db = new RaptorexContext();
+        private IBaseRepository<RaptorexUser> _userRepository;
 
-        // GET: api/Users
-        public IQueryable<RaptorexUser> GetUsers()
+        public UsersController()
         {
-            return db.Users;
+            _userRepository = new UserRepository();
         }
 
-        // GET: api/Users/5
-        [ResponseType(typeof(RaptorexUser))]
-        public IHttpActionResult GetUser(Guid id)
+        public UsersController(IBaseRepository<RaptorexUser> userRepository)
         {
-            RaptorexUser user = db.Users.Find(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+            _userRepository = userRepository;
+        }
 
-            return Ok(user);
+        private RaptorexContext db = new RaptorexContext();
+
+        [HttpGet]
+        [Route("all")]
+        public IList<RaptorexUser> GetUsers()
+        {
+            var res = _userRepository.Filter(u => true).ToList();
+            return res;
+        }
+
+        [HttpGet]
+        [Route("user")]
+        public RaptorexUser GetUser(Guid userId)
+        {
+            var user = _userRepository.GetByPrimaryKey(userId);
+            return user;
         }
 
         // PUT: api/Users/5

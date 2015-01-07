@@ -12,6 +12,7 @@ namespace Raptorex.DA.Repositories
     {
         IEnumerable<T> Filter(Expression<Func<T, bool>> condition);
         T GetSingle(Expression<Func<T, bool>> condition);
+        T GetByPrimaryKey(Guid id);
         void Insert(T obj);
         void Update(T obj);
         void Remove(Guid id);

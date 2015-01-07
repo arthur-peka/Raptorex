@@ -15,7 +15,7 @@ namespace Raptorex.DA.Repositories
         {
             using (var context = new RaptorexContext())
             {
-                return context.Set<T>().Where(condition);
+                return context.Set<T>().Where(condition).ToList();
             }
         }
 
@@ -24,6 +24,14 @@ namespace Raptorex.DA.Repositories
             using (var context = new RaptorexContext())
             {
                 return context.Set<T>().SingleOrDefault(condition);
+            }
+        }
+
+        public T GetByPrimaryKey(Guid id)
+        {
+            using (var context = new RaptorexContext())
+            {
+                return context.Set<T>().Find(id);
             }
         }
 
