@@ -42,5 +42,11 @@ namespace Raptorex.Tests.Fakes
         {
             
         }
+
+
+        public RaptorexUser GetByPrimaryKey(Guid id)
+        {
+            return _users.SingleOrDefault(u => u.ID == id);
+        }
     }
 }
