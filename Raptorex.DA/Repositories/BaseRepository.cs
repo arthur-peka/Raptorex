@@ -48,6 +48,14 @@ namespace Raptorex.DA.Repositories
         {
             using (var context = new RaptorexContext())
             {
+                if(obj.ID == Guid.Empty)
+                    throw new ArgumentException("Entity ID cannot be empty");
+
+                var existingEntity = context.Set<T>().Find(obj.ID);
+
+                if (existingEntity == null)
+                    throw new ArgumentException("Entity doesn't exist");
+
                 context.Entry<T>(obj).State = EntityState.Modified;
                 context.SaveChanges();
             }

@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using Raptorex.BO.Entities;
 using Raptorex.DA;
 using Raptorex.DA.Repositories;
+using Raptorex.Filters;
 
 namespace Raptorex.Controllers.api
 {
@@ -40,44 +41,22 @@ namespace Raptorex.Controllers.api
         }
 
         [HttpGet]
-        [Route("user")]
+        [Route("user/{userId}")]
         public RaptorexUser GetUser(Guid userId)
         {
             var user = _userRepository.GetByPrimaryKey(userId);
             return user;
         }
 
-        // PUT: api/Users/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(Guid id, RaptorexUser user)
+        [HttpPut]
+        [ValidateModel]
+        [Route("user")]
+        public IHttpActionResult UpdateUser(RaptorexUser user)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (user.ID == Guid.Empty)
+                return BadRequest("User ID cannot be empty");
 
-            if (id != user.ID)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(user).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _userRepository.Update(user);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
