@@ -58,6 +58,9 @@ namespace Raptorex.DA.Repositories
             using (var context = new RaptorexContext())
             {
                 T entity = context.Set<T>().SingleOrDefault(e => e.ID == id);
+                if (entity == null)
+                    throw new ArgumentException("Entity with provided id doesn't exist");
+
                 context.Set<T>().Remove(entity);
                 context.SaveChanges();
             }
