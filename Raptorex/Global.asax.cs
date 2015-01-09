@@ -9,6 +9,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
 
 namespace Raptorex
 {
@@ -23,6 +24,12 @@ namespace Raptorex
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Database.SetInitializer<RaptorexContext>(new RaptorexInitializer());
+
+            using (var context = new RaptorexContext())
+            {
+                context.Database.Initialize(false);
+            }
+
             ModelMappings.Create();
         }
     }
