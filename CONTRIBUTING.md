@@ -10,4 +10,4 @@ TBA
 
 ### Entity Framework
 
-* Use Fluent API over Annotations.
+* Use Annotations over Fluent API. The reason is to reuse annotations for server-side validation.
