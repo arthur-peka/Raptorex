@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Raptorex.DA
 {
-    public class RaptorexInitializer : DropCreateDatabaseAlways<RaptorexContext>
+    public class RaptorexInitializer : DropCreateDatabaseIfModelChanges<RaptorexContext>
     {
         protected override void Seed(RaptorexContext context)
         {
