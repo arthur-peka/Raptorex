@@ -10,7 +10,5 @@ namespace Raptorex.DA.Repositories
     public class UserRepository : BaseRepository<RaptorexUser>
     {
         
-
-
     }
 }
