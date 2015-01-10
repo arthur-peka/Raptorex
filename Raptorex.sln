@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{64115B
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raptorex.DA.Tests", "Raptorex.DA.Tests\Raptorex.DA.Tests.csproj", "{5FAAE663-BD31-4D4B-BB0F-8C3D4707C080}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,11 +42,16 @@ Global
 		{11BB6544-E343-4018-9BE5-C7D6BCD5C0A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11BB6544-E343-4018-9BE5-C7D6BCD5C0A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11BB6544-E343-4018-9BE5-C7D6BCD5C0A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FAAE663-BD31-4D4B-BB0F-8C3D4707C080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FAAE663-BD31-4D4B-BB0F-8C3D4707C080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FAAE663-BD31-4D4B-BB0F-8C3D4707C080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FAAE663-BD31-4D4B-BB0F-8C3D4707C080}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{11BB6544-E343-4018-9BE5-C7D6BCD5C0A7} = {4863014A-FBC2-4AFD-9BE9-F535029E62EC}
+		{5FAAE663-BD31-4D4B-BB0F-8C3D4707C080} = {4863014A-FBC2-4AFD-9BE9-F535029E62EC}
 	EndGlobalSection
 EndGlobal
