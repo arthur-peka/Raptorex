@@ -11,8 +11,6 @@ namespace Raptorex.DA
 {
     public class RaptorexContext : DbContext
     {
-        public RaptorexContext() : base("RaptorexDb") { }
-
         public DbSet<Subforum> Subforums { get; set; }
         public DbSet<ForumTopic> ForumTopics { get; set; }
         public DbSet<ForumPost> ForumPosts { get; set; }
