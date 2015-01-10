@@ -17,6 +17,7 @@ namespace Raptorex.BO.Entities
 
         #region Navigation
 
+        [Required]
         public Guid MessageTopicId { get; set; }
 
         public ForumTopic MessageTopic { get; set; }
