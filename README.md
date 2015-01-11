@@ -9,12 +9,7 @@ Project's main philosophy (i.e. development approach) is "Make things as simple 
 
 ## Roadmap
 
-* Unit/Integration tests
-
-* Decision needs to be made what to use - Knockout or Angular. I plan to start with Knockout, as I know it better. Later, possibly
-transition to Angular will be made.
-
-* Ensuring compatability with Mono, so that Raptorex can be run on non-Windows platforms.
+See [TODO.md](TODO.md)
 
 ## Contributing
 

@@ -12,4 +12,10 @@
 
 * Forum themes (different looks)
 
+* Ensure compatability with Mono, so that Raptorex can be run on non-Windows platforms.
+
+## Ideas
+
+* Evaluate transition from Knockout to Angular
+
 ## Done
