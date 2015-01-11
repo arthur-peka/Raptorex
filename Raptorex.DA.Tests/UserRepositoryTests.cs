@@ -25,6 +25,11 @@ namespace Raptorex.DA.Tests
         {
             UserRepository ur = new UserRepository();
             string newUsersUsername = "ivan2000";
+
+            var userFromDbBeforeAdd = ur.GetSingle(u => u.Username == newUsersUsername);
+
+            Assert.True(userFromDbBeforeAdd == null);
+
             var userToAdd = new RaptorexUser() { Email = "ivan@vasja.com", Username = newUsersUsername };
 
             ur.Insert(userToAdd);
