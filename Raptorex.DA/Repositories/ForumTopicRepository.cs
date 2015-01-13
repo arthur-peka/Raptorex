@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Raptorex.DA.Repositories
 {
-    public class ForumThreadRepository : BaseRepository<ForumTopic>
+    public class ForumTopicRepository : BaseRepository<ForumTopic>
     {
-        public static ForumThreadRepository Instance = new ForumThreadRepository();
-
 
     }
 }
