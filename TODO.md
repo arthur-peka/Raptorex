@@ -6,6 +6,8 @@
 
 * User admin panel
 
+* Custom authentication mechanism instead of FormsAuthentication. FormsAuthentication is *really* clumsy.
+
 ## Planned (someday)
 
 * Controller tests mocking DA level (when/if there's a logic to test on Controller level)
@@ -17,5 +19,7 @@
 ## Ideas
 
 * Evaluate transition from Knockout to Angular
+
+* ASP.NET 5 (aka vNext) front-end
 
 ## Done
