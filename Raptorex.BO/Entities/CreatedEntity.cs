@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Raptorex.BO.Entities
 {
-    public class CreatedEntity : BaseEntity
+    public abstract class CreatedEntity : BaseEntity
     {
         public RaptorexUser CreatedBy { get; set; }
 
