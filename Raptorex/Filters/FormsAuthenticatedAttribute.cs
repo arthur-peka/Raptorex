@@ -28,7 +28,7 @@ namespace Raptorex.Filters
 
                 var userCookie = headerCookies.First().Cookies.FirstOrDefault(c => c.Name == FormsAuthentication.FormsCookieName);
 
-                if (userCookie == null || userCookie.Value == null)
+                if (userCookie == null || String.IsNullOrEmpty(userCookie.Value))
                     throw new SecurityException();
 
                 FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(userCookie.Value);

@@ -40,7 +40,9 @@ namespace Raptorex.Controllers.api
                 return new HttpResponseMessage(HttpStatusCode.Unauthorized);
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
 
-            InsertAuthCookie(loginInfo.Username, response, DateTime.Now.AddMilliseconds(FormsAuthentication.Timeout.Milliseconds));
+            
+            InsertAuthCookie(loginInfo.Username, response, 
+                DateTime.Now.AddMilliseconds(FormsAuthentication.Timeout.Milliseconds), Request.RequestUri.Host);
 
             return response;
         }
@@ -77,6 +79,7 @@ namespace Raptorex.Controllers.api
 
         [HttpGet]
         [CacheControl(MaxAgeSeconds=1, NoCache=true)]
+        [FormsAuthenticated]
         [Route("currentUser")]
         public string GetCurrentUsername()
         {
@@ -101,7 +104,7 @@ namespace Raptorex.Controllers.api
             return null;
         }
 
-        private static void InsertAuthCookie(string username, HttpResponseMessage response, DateTime expirationDate)
+        private static void InsertAuthCookie(string username, HttpResponseMessage response, DateTime expirationDate, string domain)
         {
             FormsAuthenticationTicket authTicket =
                 new FormsAuthenticationTicket(
@@ -111,10 +114,12 @@ namespace Raptorex.Controllers.api
                     expiration: expirationDate,
                     isPersistent: false,
                     userData: username,
-                    cookiePath: FormsAuthentication.FormsCookiePath);
+                    cookiePath: "/");
 
             string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
             var authCookie = new CookieHeaderValue(FormsAuthentication.FormsCookieName, encryptedTicket);
+            authCookie.Domain = domain;
+            authCookie.Path = "/";
 
             response.Headers.AddCookies(new CookieHeaderValue[] { authCookie });
         }
