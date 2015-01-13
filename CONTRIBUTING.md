@@ -12,6 +12,10 @@ TBA
 
 * Use Annotations over Fluent API. The reason is to reuse annotations for server-side validation.
 
+### Web API
+
+* Always explicitly specify request method attribute, e.g. [HttpGet]
+
 ## Tools
 
 Currently, the following tools are needed for a comfortable work with the project:
