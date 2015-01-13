@@ -18,4 +18,6 @@
 
 * Evaluate transition from Knockout to Angular
 
+* ASP.NET 5 (aka vNext) front-end
+
 ## Done
