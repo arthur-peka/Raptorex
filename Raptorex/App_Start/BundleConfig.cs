@@ -21,7 +21,8 @@ namespace Raptorex
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
-                      "~/Scripts/knockout-3.2.0.js"));
+                      "~/Scripts/knockout-3.2.0.js",
+                      "~/Scripts/knockout.mapping-latest.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
