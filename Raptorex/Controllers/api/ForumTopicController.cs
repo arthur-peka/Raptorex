@@ -14,12 +14,12 @@ using System.Web.Security;
 namespace Raptorex.Controllers.api
 {
     [RoutePrefix("api/forum")]
-    public class ForumThreadsController : ApiController
+    public class ForumTopicController : ApiController
     {
         private IBaseRepository<ForumTopic> _topicRepository;
         private IBaseRepository<Subforum> _subforumRepository;
 
-        public ForumThreadsController()
+        public ForumTopicController()
         {
             _topicRepository = new ForumTopicRepository();
             _subforumRepository = new SubforumRepository();
