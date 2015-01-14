@@ -119,7 +119,7 @@ namespace Raptorex.Controllers.api
             string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
             var authCookie = new CookieHeaderValue(FormsAuthentication.FormsCookieName, encryptedTicket);
             authCookie.Domain = domain;
-            authCookie.Path = "/";
+            authCookie.Path = "/"; //set path to root instead of current controller path
 
             response.Headers.AddCookies(new CookieHeaderValue[] { authCookie });
         }
