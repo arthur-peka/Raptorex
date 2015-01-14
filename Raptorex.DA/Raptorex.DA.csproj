@@ -60,6 +60,7 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\ForumTopicRepository.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
+    <Compile Include="Repositories\SubforumRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
