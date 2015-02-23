@@ -11,6 +11,13 @@ Project's main philosophy (i.e. development approach) is "Make things as simple 
 
 See [TODO.md](TODO.md)
 
+## Compiling
+
+You need the following to compile the code:
+* .NET 4.5
+* Node.js (for npm and stuff)
+* Git (should be in PATH - Bower needs it)
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
