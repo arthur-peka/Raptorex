@@ -17,6 +17,7 @@ You need the following to compile the code:
 * .NET 4.5
 * Node.js (for npm and stuff)
 * Git (should be in PATH - Bower needs it)
+* Visual Studio 2013 (Possibly optional, you need LocalDb though - comes with Studio afaik)
 
 ## Contributing
 
